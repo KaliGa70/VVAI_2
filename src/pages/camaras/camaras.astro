@@ -1,7 +1,33 @@
 ---
-import Layout from '../../layouts/Layout.astro'
+// Esta es una instrucción de importación que importa el componente Layout desde el archivo astro
+import Layout from '../../layouts/Layout.astro';
+
+// Esta es una instrucción de importación que importa el archivo normalize.css
+import 'normalize.css';
+    
+// Esta es una instrucción de importación que importa el archivo inicio.css -->
+import '../../../src/css/inicio/scrollStyle.css';
 ---
 
-<Layout title="Videovigilancia">
-    
+<Layout title="Cámaras">
+    <!-- Este es un elemento div con una barra de desplazamiento personalizada y algunos estilos -->
+    <div class=" max-w-7xl mx-auto w-full h-auto p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div class="grid gap-4 grid-cols-2 w-full h-full">
+            <div class="w-full h-full">
+                <img src="/public/Image/test/cam_01.jpeg" alt="cam_01" class="w-full h-full object-cover">
+            </div>
+
+            <div class="w-full h-full">
+                <img src="/public/Image/test/cam_01.jpeg" alt="cam_01" class="w-full h-full object-cover">
+            </div>
+
+            <div class="w-full h-full">
+                <img src="/public/Image/test/cam_01.jpeg" alt="cam_01" class="w-full h-full object-cover">
+            </div>
+
+            <div class="w-full h-full">
+                <img src="/public/Image/test/cam_01.jpeg" alt="cam_01" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </div>
 </Layout>

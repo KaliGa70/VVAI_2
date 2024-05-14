@@ -1,16 +1,21 @@
 ---
+
+// Esta es una interfaz que define la forma del objeto de props
 interface Props {
+	// Esta es una propiedad que representa el título de la página
 	title: string;
 }
 
+// Esta es una asignación de desestructuración que extrae la propiedad título del objeto de props
 const { title } = Astro.props;
 
+// Esta es una instrucción de importación que importa el componente Header desde el archivo especificado
 import Header from '../../components/estructura/HeaderInicioSesion.astro';
 
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="" />
@@ -20,10 +25,13 @@ import Header from '../../components/estructura/HeaderInicioSesion.astro';
 		<title>{title}</title>
 	</head>
 	<body class="bg-gray-900">
+		<!-- Este es un comentario que explica que se está utilizando el componente Header aquí -->
 		<Header/>
 		<main>
+			<!-- Este es un comentario que explica que se está utilizando el componente slot aquí -->
 			<slot />
 		</main>
 	</body>
 </html>
 
+---

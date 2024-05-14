@@ -1,21 +1,29 @@
 ---
+// Esta es una instrucción de importación que importa el componente Layout desde el archivo astro
 import Layout from '../../layouts/Layout.astro';
+
+// Esta es una instrucción de importación que importa el archivo normalize.css
 import 'normalize.css';
-import '../../../src/css/inicio/inicio.css'
+    
+// Esta es una instrucción de importación que importa el archivo inicio.css -->
+import '../../../src/css/inicio/scrollStyle.css';
 ---
-
+    
+<!-- Este es el componente Layout con el título "Inicio" -->
 <Layout title="Inicio">
-
-	<div class="custom-scrollbar overflow-y-auto max-w-7xl mx-auto w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-
+    <!-- Este es un elemento div con una barra de desplazamiento personalizada y algunos estilos -->
+    <div class="custom-scrollbar overflow-y-auto max-w-7xl mx-auto w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+    
+        <!-- Este es un elemento div con algunos estilos y una imagen y un encabezado -->
         <div class="flex items-center mb-5">
             <div class="flex items-center">
                 <img src="/public/Image/inicio/Alertas.png" alt="VVAI" class="h-20 w-auto"/>
                 <h2 class="ml-4 mb-0 text-3xl font-bold text-gray-900 dark:text-white">Alertas</h2>
             </div>
         </div>
-        
-
+            
+    
+        <!-- Este es un elemento div con algunos estilos y un encabezado y un párrafo -->
         <div class="mb-6 w-full p-4  bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">CamaraSeguridad_EdificioOficinas_01</h5>
             <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
@@ -27,7 +35,8 @@ import '../../../src/css/inicio/inicio.css'
                 pasillo en dirección a las escaleras de emergencia.
             </p>
         </div>
-        
+            
+        <!-- Este es un elemento div con algunos estilos y un encabezado y un párrafo -->
         <div class="mb-6 w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">CamaraSeguridad_EdificioOficinas_02</h5>
             <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
@@ -37,5 +46,5 @@ import '../../../src/css/inicio/inicio.css'
             </p>
         </div>
     </div>
-
+    
 </Layout>
