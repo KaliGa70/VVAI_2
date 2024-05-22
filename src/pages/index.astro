@@ -1,12 +1,42 @@
 ---
 import LayoutLogin from '../layouts/LayoutLogin/LayoutLogin.astro';
 import 'normalize.css'
-import { db, Usuarios } from 'astro:db';
+import { db, Usuarios, eq, sql} from 'astro:db';
+
+if (Astro.request.method === "POST") {
+	const formData = await Astro.request.formData();
+	const username = formData.get("username");
+	const password = formData.get("password");
+	console.log({username, password});
+
+	const usuario = await db.select().from(Usuarios).where(sql`${Usuarios.nombreUsuario} = ${username?.toString()}`);
+	//console.log(await db.select().from(Usuarios).where(sql`${Usuarios.nombreUsuario} = ${username?.toString()}`))
+	if (usuario.length > 0) {
+		return new Response(null, {
+			status: 302,
+			headers: {
+				Location: '/main/inicio' // Change '/another-page' to the path you want to redirect to
+			}
+		});
+	} else {
+		console.log("FALSE")
+	}
+	
+
+}
+
+//const usuarios = await db.select().from(Usuarios);
+
+//const usuario = await db.select().from(Usuarios).where(eq(Usuarios.nombreUsuario, "aagarcia"))
+
+//console.log(usuario)
+
+
 ---
 
 <LayoutLogin title="Iniciar sesión">
 	<div class="max-w-md mx-auto my-10 p-8 w-full bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-		<form class="space-y-6" action="#">
+		<form class="space-y-6" method="POST">
 			<h5 class="text-xl font-medium text-gray-900 dark:text-white">Iniciar sesión</h5>
 			<div>
 				<label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre de usuario</label>
@@ -32,4 +62,5 @@ import { db, Usuarios } from 'astro:db';
 		</form>
 	</div>
 </LayoutLogin>
+
 

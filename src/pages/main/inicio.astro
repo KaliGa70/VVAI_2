@@ -7,6 +7,12 @@ import 'normalize.css';
     
 // Esta es una instrucción de importación que importa el archivo inicio.css -->
 import '../../../src/css/inicio/scrollStyle.css';
+
+import { db, Alertas} from 'astro:db';
+
+const alertas = await db.select()
+  .from(Alertas)
+
 ---
     
 <!-- Este es el componente Layout con el título "Inicio" -->
@@ -22,29 +28,18 @@ import '../../../src/css/inicio/scrollStyle.css';
             </div>
         </div>
             
-    
-        <!-- Este es un elemento div con algunos estilos y un encabezado y un párrafo -->
-        <div class="mb-6 w-full p-4  bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">CamaraSeguridad_EdificioOficinas_01</h5>
-            <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
-                Se detectó movimiento en la cámara de seguridad ubicada en el pasillo 
-                principal del tercer piso del edificio de oficinas. La cámara registró 
-                una figura humana moviéndose en dirección sur, entrando en el área de 
-                las oficinas. La figura fue identificada como un individuo vestido con 
-                camisa blanca y pantalones oscuros. La persona caminó rápidamente por el 
-                pasillo en dirección a las escaleras de emergencia.
-            </p>
-        </div>
-            
-        <!-- Este es un elemento div con algunos estilos y un encabezado y un párrafo -->
-        <div class="mb-6 w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">CamaraSeguridad_EdificioOficinas_02</h5>
-            <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
-                Se detectó movimiento en la cámara de seguridad ubicada en el pasillo 
-                principal del tercer piso del edificio de oficinas. La cámara captó la 
-                presencia de un individuo portando un arma blanca.
-            </p>
-        </div>
+        {
+            //Este es un elemento div con algunos estilos y un encabezado y un párrafo
+            alertas.map(({ comentario, nombre }) => (
+                <div class="mb-6 w-full p-4  bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">{nombre}</h5>
+                    <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
+                        {comentario}
+                    </p>
+                </div>
+            ))
+        }    
+        
     </div>
     
 </Layout>
